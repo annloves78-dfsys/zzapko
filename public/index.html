@@ -8,14 +8,80 @@
 </head>
 <body>
 
-<div id="menu-screen" class="screen">
-  <h1>짭코 대전쟁</h1>
-  <p class="subtitle">유닛을 소환해서 상대 기지를 부숴라!</p>
-  <div class="menu-buttons">
-    <button id="single-btn">1인용 시작</button>
-    <button id="pvp-btn">1:1 대전 찾기</button>
+<div id="menu-screen" class="screen home-screen">
+
+  <div class="topbar">
+    <div class="topbar-left">
+      <span class="topbar-title">짭코 기지</span>
+      <span class="event-badge">던전 준비중</span>
+    </div>
+    <div class="topbar-right">
+      <span class="point-label">POINT</span>
+      <span class="point-value">0</span>
+    </div>
   </div>
-  <p id="queue-status" class="queue-status hidden">상대를 찾는 중...</p>
+
+  <div class="subbar">
+    <div class="currency-box">
+      <span class="coin-icon">●</span>
+      <span class="coin-value">0</span>
+    </div>
+    <button class="round-btn" disabled title="준비중">i</button>
+    <button class="round-btn" disabled title="준비중">📅</button>
+  </div>
+
+  <div class="base-body">
+    <div class="base-left">
+      <button id="start-battle-btn" class="big-btn big-btn-primary">전투개시!!</button>
+      <button class="big-btn" disabled>파워 업<span class="soon-badge">준비중</span></button>
+      <button class="big-btn" disabled>캐릭터 편성<span class="soon-badge">준비중</span></button>
+
+      <div class="icon-row">
+        <button class="icon-btn" disabled><span class="icon-glyph">📖</span>메뉴</button>
+        <button class="icon-btn" disabled><span class="icon-glyph">🎩</span>가마토토</button>
+        <button class="icon-btn" disabled><span class="icon-glyph">📜</span>미션</button>
+      </div>
+    </div>
+
+    <div class="base-right">
+      <div class="stage-dots">
+        <button class="stage-dot" disabled></button>
+        <button class="stage-dot" disabled></button>
+      </div>
+      <div class="speech-bubble">유닛을 소환해서 상대 기지를 부숴라!</div>
+      <div class="mascot">
+        <div class="mascot-face">
+          <div class="mascot-eye left"></div>
+          <div class="mascot-eye right"></div>
+          <div class="mascot-mouth"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottombar">
+    <button class="gacha-banner" disabled>뽑기 개최 중!!</button>
+    <div class="bottombar-buttons">
+      <button class="mini-btn" disabled>저장고</button>
+      <button class="mini-btn" disabled>유닛 뽑기<span class="soon-badge">준비중</span></button>
+      <button class="mini-btn" disabled>레어 뽑기<span class="soon-badge">준비중</span></button>
+    </div>
+    <button class="shop-btn" disabled>🛒 아이템 샵<span class="soon-badge">준비중</span></button>
+    <div class="can-currency"><span>🥫</span><span>0</span></div>
+  </div>
+
+  <div id="battle-select-panel" class="battle-select-panel hidden">
+    <div class="battle-select-box">
+      <h2>전투 방식 선택</h2>
+      <div class="menu-buttons">
+        <button id="single-btn">1인용 시작</button>
+        <button id="pvp-btn">1:1 대전 찾기</button>
+      </div>
+      <p id="queue-status" class="queue-status hidden">상대를 찾는 중...</p>
+      <button id="battle-select-close" class="battle-select-close">닫기</button>
+    </div>
+  </div>
+
 </div>
 
 <div id="battle-screen" class="screen hidden">

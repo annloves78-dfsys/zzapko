@@ -17,20 +17,335 @@ body {
   align-items: center;
 }
 
-/* 메뉴 */
-#menu-screen {
+/* 메뉴 (냥코 기지 스타일) */
+.home-screen {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 12px;
+  gap: 10px;
+  align-items: stretch;
+  background: linear-gradient(180deg, #6b4423, #4a2e18);
+  min-height: 100vh;
+}
+
+.topbar, .bottombar {
+  background: #3a2410;
+  border: 3px solid #7a5230;
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.topbar-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffe9b3;
+}
+.event-badge {
+  font-size: 11px;
+  background: #2a5d3a;
+  color: #cdeecd;
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.point-label {
+  font-size: 11px;
+  color: #d8b978;
+}
+.point-value {
+  font-weight: bold;
+  color: #ffe9b3;
+  background: #2a1a0d;
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+.subbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.currency-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #2a1a0d;
+  border: 2px solid #7a5230;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-weight: bold;
+  color: #ffe9b3;
+}
+.coin-icon {
+  color: #f0c33d;
+}
+.round-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #7a5230;
+  background: #4a2e18;
+  color: #d8b978;
+  font-size: 13px;
+  opacity: 0.6;
+}
+.round-btn:disabled {
+  cursor: not-allowed;
+}
+
+.base-body {
+  display: flex;
+  gap: 12px;
+  flex: 1;
+}
+.base-left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 45%;
+}
+.base-right {
+  flex: 1;
+  position: relative;
+  background: linear-gradient(160deg, #5c7a4a, #3d5530);
+  border: 3px solid #7a5230;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 260px;
+  overflow: hidden;
+}
+
+.big-btn {
+  position: relative;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 3px solid #a8710f;
+  background: linear-gradient(180deg, #ffd25c, #e0a021);
+  color: #4a2e00;
+  cursor: pointer;
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.5), 0 3px 0 #8a5a0a;
+}
+.big-btn:hover:not(:disabled) {
+  filter: brightness(1.05);
+}
+.big-btn:disabled {
+  background: linear-gradient(180deg, #bdb090, #93866a);
+  color: #5a5142;
+  border-color: #6b5f45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.big-btn-primary {
+  font-size: 22px;
+  padding: 20px;
+}
+.soon-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #d6544a;
+  color: #fff;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.icon-row {
+  display: flex;
+  gap: 8px;
+}
+.icon-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 4px;
+  font-size: 11px;
+  border-radius: 8px;
+  border: 2px solid #7a5230;
+  background: #4a2e18;
+  color: #d8b978;
+  opacity: 0.6;
+}
+.icon-btn:disabled {
+  cursor: not-allowed;
+}
+.icon-glyph {
+  font-size: 18px;
+}
+
+.stage-dots {
+  display: flex;
+  gap: 14px;
+  margin-bottom: auto;
+}
+.stage-dot {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #8a6a45;
+  border: 3px solid #5c4326;
+  opacity: 0.6;
+}
+.stage-dot:disabled {
+  cursor: not-allowed;
+}
+
+.speech-bubble {
+  background: #fff;
+  color: #333;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 13px;
+  max-width: 220px;
+  text-align: center;
+  position: relative;
+  margin-bottom: 12px;
+}
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  right: 24px;
+  border-width: 10px 8px 0 8px;
+  border-style: solid;
+  border-color: #fff transparent transparent transparent;
+}
+
+.mascot {
+  width: 90px;
+  height: 90px;
+}
+.mascot-face {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+.mascot-eye {
+  width: 8px;
+  height: 8px;
+  background: #333;
+  border-radius: 50%;
+  position: absolute;
+  top: 38px;
+}
+.mascot-eye.left { left: 26px; }
+.mascot-eye.right { right: 26px; }
+.mascot-mouth {
+  width: 20px;
+  height: 10px;
+  border: 2px solid #333;
+  border-top: none;
+  border-radius: 0 0 20px 20px;
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bottombar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.gacha-banner {
+  padding: 8px;
+  font-weight: bold;
+  border-radius: 8px;
+  border: 2px solid #a8710f;
+  background: linear-gradient(180deg, #ff9c5c, #e06a20);
+  color: #fff;
+  opacity: 0.85;
+}
+.gacha-banner:disabled {
+  cursor: not-allowed;
+}
+.bottombar-buttons {
+  display: flex;
+  gap: 8px;
+}
+.mini-btn, .shop-btn {
+  position: relative;
+  padding: 10px 4px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 8px;
+  border: 2px solid #7a5230;
+  background: #5a3a1e;
+  color: #d8b978;
+  opacity: 0.7;
+}
+.mini-btn { flex: 1; }
+.shop-btn { padding: 10px; }
+.mini-btn:disabled, .shop-btn:disabled {
+  cursor: not-allowed;
+}
+.can-currency {
+  display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 6px;
+  font-weight: bold;
+  color: #ffe9b3;
 }
-#menu-screen h1 {
-  font-size: 42px;
+
+.battle-select-panel {
+  position: fixed;
+  inset: 0;
+  background: #000a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+.battle-select-box {
+  background: #2a2d3a;
+  padding: 28px 32px;
+  border-radius: 14px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.battle-select-box h2 {
   margin: 0;
-  letter-spacing: 2px;
+  font-size: 18px;
+  color: #eee;
 }
-.subtitle {
-  color: #999;
-  margin: 0 0 16px;
+.battle-select-close {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #555;
+  color: #fff;
+  cursor: pointer;
 }
+
 .menu-buttons {
   display: flex;
   gap: 12px;

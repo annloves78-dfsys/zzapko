@@ -6,6 +6,9 @@ const gameoverOverlay = document.getElementById('gameover-overlay');
 const gameoverTitle = document.getElementById('gameover-title');
 const queueStatus = document.getElementById('queue-status');
 
+const startBattleBtn = document.getElementById('start-battle-btn');
+const battleSelectPanel = document.getElementById('battle-select-panel');
+const battleSelectClose = document.getElementById('battle-select-close');
 const singleBtn = document.getElementById('single-btn');
 const pvpBtn = document.getElementById('pvp-btn');
 const leaveBtn = document.getElementById('leave-btn');
@@ -105,6 +108,15 @@ function renderState(state) {
   });
 }
 
+startBattleBtn.addEventListener('click', () => {
+  battleSelectPanel.classList.remove('hidden');
+});
+
+battleSelectClose.addEventListener('click', () => {
+  battleSelectPanel.classList.add('hidden');
+  queueStatus.classList.add('hidden');
+});
+
 singleBtn.addEventListener('click', () => {
   queueStatus.classList.add('hidden');
   socket.emit('single:start');
@@ -135,6 +147,7 @@ socket.on('matchStart', ({ side, units }) => {
   resetBattleUI();
   renderUnitButtons(units);
   queueStatus.classList.add('hidden');
+  battleSelectPanel.classList.add('hidden');
   showScreen('battle');
 });
 
