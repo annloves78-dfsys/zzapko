@@ -34,7 +34,7 @@
     <div class="base-left">
       <button id="start-battle-btn" class="big-btn big-btn-primary">전투개시!!</button>
       <button class="big-btn" disabled>파워 업<span class="soon-badge">준비중</span></button>
-      <button class="big-btn" disabled>캐릭터 편성<span class="soon-badge">준비중</span></button>
+      <button id="formation-btn" class="big-btn">캐릭터 편성</button>
 
       <div class="icon-row">
         <button class="icon-btn" disabled><span class="icon-glyph">📖</span>메뉴</button>
@@ -79,6 +79,19 @@
       </div>
       <p id="queue-status" class="queue-status hidden">상대를 찾는 중...</p>
       <button id="battle-select-close" class="battle-select-close">닫기</button>
+    </div>
+  </div>
+
+  <div id="formation-panel" class="battle-select-panel hidden">
+    <div class="battle-select-box formation-box">
+      <h2>캐릭터 편성</h2>
+      <p class="formation-hint">전투에 들고 갈 유닛을 골라줘 (최소 1개)</p>
+      <div id="formation-list" class="formation-list"></div>
+      <p id="formation-error" class="formation-error hidden">최소 1개는 선택해야 해!</p>
+      <div class="menu-buttons">
+        <button id="formation-save-btn">저장</button>
+        <button id="formation-close-btn" class="battle-select-close">닫기</button>
+      </div>
     </div>
   </div>
 

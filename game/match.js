@@ -30,6 +30,20 @@ class Match {
     this.interval = null;
     this.aiCooldown = 1000;
     this.sides = { left: makeSide(), right: makeSide() };
+    this.allowed = {
+      left: new Set(UNIT_TYPES.map((t) => t.id)),
+      right: new Set(UNIT_TYPES.map((t) => t.id)),
+    };
+  }
+
+  setLoadout(sideKey, ids) {
+    const validIds = Array.isArray(ids) ? ids.filter((id) => UNIT_TYPES.some((t) => t.id === id)) : [];
+    this.allowed[sideKey] = new Set(validIds.length > 0 ? validIds : UNIT_TYPES.map((t) => t.id));
+  }
+
+  getAllowedList(sideKey) {
+    const allowed = this.allowed[sideKey];
+    return UNIT_TYPES.filter((t) => allowed.has(t.id));
   }
 
   start() {
@@ -46,6 +60,7 @@ class Match {
     const type = getUnitType(unitTypeId);
     const side = this.sides[sideKey];
     if (!type || !side) return false;
+    if (!this.allowed[sideKey].has(type.id)) return false;
     if (side.money < type.cost) return false;
 
     side.money -= type.cost;
@@ -67,7 +82,7 @@ class Match {
     this.aiCooldown -= dt * 1000;
     if (this.aiCooldown > 0) return;
     const money = this.sides.right.money;
-    const affordable = UNIT_TYPES.filter((t) => t.cost <= money);
+    const affordable = this.getAllowedList('right').filter((t) => t.cost <= money);
     if (affordable.length > 0) {
       const pick = affordable[Math.floor(Math.random() * affordable.length)];
       this.spawnUnit('right', pick.id);

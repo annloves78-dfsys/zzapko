@@ -47,19 +47,31 @@ function leaveMatch(socket) {
 io.on('connection', (socket) => {
   socket.data.matchId = null;
   socket.data.side = null;
+  socket.data.loadout = [];
 
-  socket.on('single:start', () => {
+  socket.emit('unitCatalog', UNIT_TYPES);
+
+  socket.on('single:start', (payload) => {
     leaveMatch(socket);
+    socket.data.loadout = (payload && payload.loadout) || [];
     const match = createMatch('single');
     socket.join(match.room);
     socket.data.matchId = match.id;
     socket.data.side = 'left';
+    match.setLoadout('left', socket.data.loadout);
     match.start();
-    socket.emit('matchStart', { mode: 'single', side: 'left', units: UNIT_TYPES });
+    socket.emit('matchStart', {
+      mode: 'single',
+      side: 'left',
+      allUnits: UNIT_TYPES,
+      myUnits: match.getAllowedList('left'),
+    });
   });
 
-  socket.on('pvp:queue', () => {
+  socket.on('pvp:queue', (payload) => {
     leaveMatch(socket);
+    socket.data.loadout = (payload && payload.loadout) || [];
+
     if (pvpQueue && pvpQueue.connected) {
       const opponent = pvpQueue;
       pvpQueue = null;
@@ -71,10 +83,22 @@ io.on('connection', (socket) => {
       socket.data.side = 'right';
       opponent.data.matchId = match.id;
       opponent.data.side = 'left';
+      match.setLoadout('left', opponent.data.loadout);
+      match.setLoadout('right', socket.data.loadout);
       match.start();
 
-      socket.emit('matchStart', { mode: 'pvp', side: 'right', units: UNIT_TYPES });
-      opponent.emit('matchStart', { mode: 'pvp', side: 'left', units: UNIT_TYPES });
+      socket.emit('matchStart', {
+        mode: 'pvp',
+        side: 'right',
+        allUnits: UNIT_TYPES,
+        myUnits: match.getAllowedList('right'),
+      });
+      opponent.emit('matchStart', {
+        mode: 'pvp',
+        side: 'left',
+        allUnits: UNIT_TYPES,
+        myUnits: match.getAllowedList('left'),
+      });
     } else {
       pvpQueue = socket;
       socket.emit('queueWaiting');
