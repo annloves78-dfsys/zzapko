@@ -11,6 +11,17 @@ const UNIT_TYPES = [
     color: '#d9a066',
     label: '냥',
   },
+  {
+    id: 'shieldcat',
+    name: '방패 고양이',
+    cost: 30,
+    hp: 260,
+    atk: 4,
+    atkInterval: 1200,
+    speed: 4,
+    color: '#5c8fd9',
+    label: '방',
+  },
 ];
 
 function getUnitType(id) {
