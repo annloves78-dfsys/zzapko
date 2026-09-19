@@ -14,7 +14,7 @@ const UNIT_TYPES = [
   {
     id: 'shieldcat',
     name: '방패 고양이',
-    cost: 30,
+    cost: 20,
     hp: 260,
     atk: 4,
     atkInterval: 1200,
