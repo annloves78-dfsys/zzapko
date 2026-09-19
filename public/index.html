@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>짭코 대전쟁</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="menu-screen" class="screen">
+  <h1>짭코 대전쟁</h1>
+  <p class="subtitle">유닛을 소환해서 상대 기지를 부숴라!</p>
+  <div class="menu-buttons">
+    <button id="single-btn">1인용 시작</button>
+    <button id="pvp-btn">1:1 대전 찾기</button>
+  </div>
+  <p id="queue-status" class="queue-status hidden">상대를 찾는 중...</p>
+</div>
+
+<div id="battle-screen" class="screen hidden">
+  <div class="hud">
+    <div class="hp-box left">
+      <div class="hp-label">내 기지</div>
+      <div class="hp-bar-bg"><div id="left-hp-bar" class="hp-bar-fill left"></div></div>
+    </div>
+    <div class="money-box">
+      <span id="money-value">0</span> 원
+    </div>
+    <div class="hp-box right">
+      <div class="hp-label">적 기지</div>
+      <div class="hp-bar-bg"><div id="right-hp-bar" class="hp-bar-fill right"></div></div>
+    </div>
+  </div>
+
+  <div class="lane-wrap">
+    <div id="lane" class="lane">
+      <div class="base base-left"></div>
+      <div class="base base-right"></div>
+    </div>
+  </div>
+
+  <div id="unit-buttons" class="unit-buttons"></div>
+
+  <button id="leave-btn" class="leave-btn">나가기</button>
+</div>
+
+<div id="gameover-overlay" class="overlay hidden">
+  <div class="overlay-box">
+    <h2 id="gameover-title">승리!</h2>
+    <button id="gameover-menu-btn">메뉴로</button>
+  </div>
+</div>
+
+<script src="/zzapko/socket.io/socket.io.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

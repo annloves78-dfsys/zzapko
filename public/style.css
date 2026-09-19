@@ -1,0 +1,199 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, "Malgun Gothic", sans-serif;
+  background: #1c1e26;
+  color: #eee;
+  min-height: 100vh;
+}
+
+.hidden { display: none !important; }
+
+.screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 메뉴 */
+#menu-screen {
+  justify-content: center;
+  gap: 16px;
+}
+#menu-screen h1 {
+  font-size: 42px;
+  margin: 0;
+  letter-spacing: 2px;
+}
+.subtitle {
+  color: #999;
+  margin: 0 0 16px;
+}
+.menu-buttons {
+  display: flex;
+  gap: 12px;
+}
+.menu-buttons button, .leave-btn, #gameover-menu-btn {
+  padding: 14px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background: #4a7dd6;
+  color: white;
+  cursor: pointer;
+}
+.menu-buttons button:hover, .leave-btn:hover, #gameover-menu-btn:hover {
+  background: #5c8ce0;
+}
+.queue-status {
+  color: #d6c04a;
+}
+
+/* 배틀 화면 */
+#battle-screen {
+  width: 100%;
+  padding: 16px;
+  gap: 12px;
+}
+.hud {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.hp-box {
+  flex: 1;
+}
+.hp-label {
+  font-size: 12px;
+  color: #aaa;
+  margin-bottom: 4px;
+}
+.hp-box.right .hp-label { text-align: right; }
+.hp-bar-bg {
+  background: #333;
+  border-radius: 6px;
+  height: 16px;
+  overflow: hidden;
+}
+.hp-bar-fill {
+  height: 100%;
+  width: 100%;
+  transition: width 0.1s linear;
+}
+.hp-bar-fill.left { background: #4a7dd6; }
+.hp-bar-fill.right { background: #d6544a; margin-left: auto; }
+.money-box {
+  font-weight: bold;
+  color: #d6c04a;
+  white-space: nowrap;
+}
+
+.lane-wrap {
+  width: 100%;
+  max-width: 900px;
+}
+.lane {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  background: #2a2d3a;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid #3a3d4a;
+}
+.base {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4%;
+}
+.base-left { left: 0; background: #4a7dd633; }
+.base-right { right: 0; background: #d6544a33; }
+
+.unit {
+  position: absolute;
+  top: 50%;
+  width: 30px;
+  height: 30px;
+  margin-top: -15px;
+  margin-left: -15px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: bold;
+  color: #1c1e26;
+  transition: left 0.1s linear;
+}
+.unit .unit-hp-bg {
+  position: absolute;
+  top: -8px;
+  left: 2px;
+  width: 26px;
+  height: 3px;
+  background: #000a;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.unit .unit-hp-fill {
+  height: 100%;
+  background: #4cd964;
+}
+
+.unit-buttons {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.unit-btn {
+  flex: 1;
+  min-width: 120px;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #1c1e26;
+  font-weight: bold;
+  text-align: left;
+  opacity: 1;
+}
+.unit-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.unit-btn .unit-btn-name {
+  display: block;
+  font-size: 14px;
+}
+.unit-btn .unit-btn-cost {
+  display: block;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.leave-btn {
+  background: #555;
+}
+
+/* 게임오버 */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: #000c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.overlay-box {
+  background: #2a2d3a;
+  padding: 32px 48px;
+  border-radius: 12px;
+  text-align: center;
+}
